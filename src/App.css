@@ -1,0 +1,44 @@
+*{
+  font-family: 'Kiwi Maru', serif;
+}
+body{
+  margin:0;
+  padding: 0;
+}
+
+.container{
+  min-height: 100vh;
+  overflow: hidden;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.umbrella {
+  position: relative;
+  text-align: center;
+}
+.umbrella >img{
+  height: 40vh;
+  width: auto;
+}
+.text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  flex :0 0 50%;
+  
+}
+@media (max-width:900px){
+  
+.container{
+  flex-direction: column;
+}
+}
+.text{
+  flex-direction: column;
+  padding: 10px;
+}
