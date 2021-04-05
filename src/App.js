@@ -1,25 +1,40 @@
- import { useContext } from 'react';
-import './App.css';
-import ColorPicker from './component/ColorPicker/ColorPicker';
-import Demo from './component/Demo/Demo.js';
-import Heading from './component/Heading/Heading';
-import Text from './component/Text/Text';
-import Upload from './component/Upload/Upload';
-import { Context } from './context/context';
+import React, { useContext } from "react";
+import "./App.css";
+import { Context } from "./context/context";
+
+const ColorPicker = React.lazy(() =>
+  import("./component/ColorPicker/ColorPicker")
+);
+const Demo = React.lazy(() => import("./component/Demo/Demo.js"));
+const Heading = React.lazy(() => import("./component/Heading/Heading"));
+const Text = React.lazy(() => import("./component/Text/Text"));
+const Upload = React.lazy(() => import("./component/Upload/Upload"));
 
 function App() {
-  const {bgColor}=useContext(Context)
+  const { bgColor } = useContext(Context);
   return (
-    <div className="container" style={{backgroundColor:bgColor}}>
-      <div className="umbrella"><Demo/></div>
-      <div className="text">  
-      <Heading/>
-      <ColorPicker/>
-      <Text/>
-      <Upload/>
+    <div className="container" style={{ backgroundColor: bgColor }}>
+      <div className="umbrella">
+        <React.Suspense fallback={<div>Loading</div>}>
+          <Demo />
+        </React.Suspense>
+      </div>
+      <div className="text">
+        <React.Suspense fallback={<div>Loading</div>}></React.Suspense>
+
+        <Heading />
+        <React.Suspense fallback={<div>Loading</div>}>
+          <ColorPicker />
+        </React.Suspense>
+        <React.Suspense fallback={<div>Loading</div>}>
+          <Text />
+        </React.Suspense>
+        <React.Suspense fallback={<div>Loading</div>}>
+          <Upload />
+        </React.Suspense>
       </div>
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

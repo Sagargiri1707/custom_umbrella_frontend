@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 import appReducer from "./AppReducer";
 const Context = createContext();
 const Axios = require("axios");

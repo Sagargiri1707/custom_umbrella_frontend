@@ -23,12 +23,15 @@ function Demo(props) {
         setImage(BlueImg);
         break;
       }
+      default: {
+        setImage(BlueImg);
+      }
     }
   }, [bgColor]);
   return (
     <>
       {loading ? (
-        <img src={Loader} alt="loading"  className={DemoCss.loader} />
+        <img src={Loader} alt="loading" className={DemoCss.loader} />
       ) : (
         <>
           {<img src={image} alt="Blue Img" className={DemoCss.image} />}
@@ -47,7 +50,7 @@ function Demo(props) {
   );
 }
 
-export default Demo;
+export default React.memo(Demo);
 
 function arrayBufferToBase64(buffer) {
   var binary = "";
