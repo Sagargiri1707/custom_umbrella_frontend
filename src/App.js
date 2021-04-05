@@ -20,9 +20,11 @@ function App() {
         </React.Suspense>
       </div>
       <div className="text">
-        <React.Suspense fallback={<div>Loading</div>}></React.Suspense>
-
+        <React.Suspense fallback={<div>Loading</div>}>
         <Heading />
+       
+        </React.Suspense>
+
         <React.Suspense fallback={<div>Loading</div>}>
           <ColorPicker />
         </React.Suspense>
